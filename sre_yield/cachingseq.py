@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 #
-# Copyright 2011-2015 Google Inc.
+# Copyright 2011-2016 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 # vim: sw=2 sts=2 et
+
 
 class CachingFuncSequence(object):
     def __init__(self, func, length, inc_func=None):
@@ -39,8 +40,8 @@ class CachingFuncSequence(object):
         if v is not None:
             return v
 
-        if self.inc_func and i-1 in self._cache:
-            v = self.inc_func(i, self._cache[i-1])
+        if self.inc_func and i - 1 in self._cache:
+            v = self.inc_func(i, self._cache[i - 1])
         else:
             v = self.func(i)
 
@@ -51,5 +52,5 @@ class CachingFuncSequence(object):
         return self.length
 
     def __iter__(self):
-        for i in xrange(self.length):
+        for i in range(self.length):
             yield self[i]

@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 #
-# Copyright 2011-2015 Google Inc.
+# Copyright 2011-2016 Google Inc.
+# Copyright 2018 Tim Hatch
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,36 +17,34 @@
 #
 # vim: sw=2 sts=2 et
 
-from setuptools import setup, find_packages
 import os.path
 
-here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README.rst')).read()
+from setuptools import find_packages, setup
 
-version = '1.0'
+THIS_DIR = os.path.abspath(os.path.dirname(__file__))
+README = open(os.path.join(THIS_DIR, "README.rst")).read()
 
-setup(name='sre_yield',
-      version=version,
-      description='Expands a regular expression to its possible matches',
-      long_description=README,
-      classifiers = [
-        'License :: OSI Approved :: Apache Software License',
-        'Intended Audience :: Developers',
-        'Development Status :: 5 - Production/Stable',
-        'Operating System :: OS Independent',
-      ],
-      keywords='',
-      author='Alex Perry',
-      author_email='alex.perry@google.com',
-      url='https://github.com/google/sre_yield',
-      license='Apache',
-      packages=find_packages('.'),
-      install_requires=[],
-      entry_points={
-        'console_scripts': [
-            'demo_sre_yield=sre_yield:main',
-        ],
-      },
-      test_suite='nose.collector', # doesn't find doctests though
-      tests_require=['nose'],
+VERSION = "1.2"
+
+setup(
+    name="sre_yield",
+    version=VERSION,
+    description="Expands a regular expression to its possible matches",
+    long_description=README,
+    classifiers=[
+        "License :: OSI Approved :: Apache Software License",
+        "Intended Audience :: Developers",
+        "Development Status :: 5 - Production/Stable",
+        "Operating System :: OS Independent",
+    ],
+    keywords="",
+    author="Alex Perry",
+    author_email="alex.perry@google.com",
+    url="https://github.com/google/sre_yield",
+    license="Apache",
+    packages=find_packages("."),
+    install_requires=[],
+    entry_points={"console_scripts": ["demo_sre_yield=sre_yield:main"]},
+    test_suite="nose.collector",  # doesn't find doctests though
+    tests_require=["nose"],
 )
